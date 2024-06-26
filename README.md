@@ -1,2 +1,2 @@
 # MyBlog
-A simple blog using Java Spring Boot.
+A simple blog using Java Spring Boot and Thymeleaf.
