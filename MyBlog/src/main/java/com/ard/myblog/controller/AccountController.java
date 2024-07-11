@@ -13,6 +13,12 @@ public class AccountController {
 		return "login";
 	}
 	
+	@GetMapping("/registration")
+	public String registration(Model model) {
+		
+		return "registration";
+	}
+	
 	@GetMapping("/home")
 	public String home() {
 		
