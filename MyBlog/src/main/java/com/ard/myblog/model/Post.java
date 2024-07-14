@@ -25,6 +25,10 @@ public class Post {
 	private LocalDateTime updatedAt;
 	
 	@ManyToOne
+	@JoinColumn(name="category_id", referencedColumnName = "id")
+	private Category category;
+	
+	@ManyToOne
 	@JoinColumn(name="account_id", referencedColumnName = "id")
 	private Account account;
 
@@ -66,6 +70,14 @@ public class Post {
 
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	public Account getAccount() {

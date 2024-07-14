@@ -19,9 +19,5 @@ public class AccountController {
 		return "registration";
 	}
 	
-	@GetMapping("/home")
-	public String home() {
-		
-		return "home";
-	}
+
 }
