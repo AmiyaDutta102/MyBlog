@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ard.myblog.model.Category;
 import com.ard.myblog.model.Post;
 import com.ard.myblog.repository.PostRepository;
 
@@ -14,6 +15,8 @@ import com.ard.myblog.repository.PostRepository;
 public class PostService {
 	@Autowired
 	private PostRepository postRepository;
+	@Autowired
+	private CategoryService catService ;
 	
 	public Optional<Post> getById(Long id){
 		return postRepository.findById(id);
@@ -24,7 +27,14 @@ public class PostService {
 	}
 	public Post save(Post post) {
 		if(post.getId()==0) {
+			
 			post.setCreatedAt(LocalDateTime.now());
+		}
+		if(post.getCategory()==null) {
+			Optional<Category> optCat=catService.findById(1);
+			if(optCat.isPresent()) {
+				post.setCategory(optCat.get());
+			}
 		}
 		post.setUpdatedAt(LocalDateTime.now());
 		return postRepository.save(post);

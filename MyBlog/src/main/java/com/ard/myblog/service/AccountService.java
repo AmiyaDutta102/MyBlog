@@ -53,6 +53,10 @@ public class AccountService implements UserDetailsService{
 		
 		return new User(account.getEmail(), account.getPassword(), grantedAuthority);
 	}
+
+	public Optional<Account> findByEmail(String userid) {
+		return accountRepository.findByEmail(userid);
+	}
 	
 	
 }

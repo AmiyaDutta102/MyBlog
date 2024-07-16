@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
     
 
     <!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" th:href="@{/resources/static/css/bootstrap.min.css}" rel="stylesheet">
 
     <style>
       .bd-placeholder-img {
@@ -30,13 +30,13 @@
 
     
     <!-- Custom styles for this template -->
-    <link href="css/signin.css" rel="stylesheet">
+    <link type="text/css" th:href="@{/resources/static/css/signin.css}" rel="stylesheet">
   </head>
   <body class="text-center">
     
 <main class="form-signin">
   <form th:action="@{/login}" method="post">
-    <img class="mb-4" src="img/myblog.png" alt="" width="72" height="72">
+    <img class="mb-4" th:src="@{/resources/static/img/myblog.png}" alt="" width="72" height="72">
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
 	<!-- error message -->
