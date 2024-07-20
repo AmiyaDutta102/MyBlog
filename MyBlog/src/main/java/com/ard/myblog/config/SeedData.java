@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.ard.myblog.model.Account;
+import com.ard.myblog.model.Authority;
 import com.ard.myblog.model.Category;
 import com.ard.myblog.model.Post;
 import com.ard.myblog.service.AccountService;
@@ -46,7 +47,7 @@ public class SeedData implements CommandLineRunner{
 		ac2.setDateOfBirth(LocalDate.parse("1996-06-03"));
 		ac2.setRole("USER");
 		accountService.save(ac2);
-		
+
 		List<Post> posts=postService.findAll();
 		if(posts.size()==0) {
 			List<Category> cats=catService.findAll();

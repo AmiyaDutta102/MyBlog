@@ -27,11 +27,10 @@ public class PostService {
 	}
 	public Post save(Post post) {
 		if(post.getId()==0) {
-			
 			post.setCreatedAt(LocalDateTime.now());
 		}
 		if(post.getCategory()==null) {
-			Optional<Category> optCat=catService.findById(1);
+			Optional<Category> optCat = catService.findById(1);
 			if(optCat.isPresent()) {
 				post.setCategory(optCat.get());
 			}
