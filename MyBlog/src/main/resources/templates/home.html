@@ -1,10 +1,10 @@
 
-  <head th:replace="/fragments/head :: head">
+  <head th:replace="~{/fragments/head :: head}">
     <body>
     
 <div class="container">
 
-<header th:replace="/fragments/header :: header">
+<header th:replace="~{/fragments/header :: header}">
 
   <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between" >
@@ -72,9 +72,16 @@
       </article>
 
 
-      <nav class="blog-pagination" aria-label="Pagination">
+      <nav class="blog-pagination" th:if="${links ne null}" aria-label="Pagination">
         <a class="btn btn-outline-primary" href="#">Older</a>
         <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+     	<ul class="pagination">
+	     	<th:block th:each="link: ${links}">
+	     		<li class="page-item">
+	     			<th:block th:utext="${link}">link</th:block>
+	     		</li>
+	     	</th:block>
+     	</ul>
       </nav>
 
     </div>
@@ -120,7 +127,7 @@
 
 
 
-<footer th:replace="/fragments/footer :: footer">
+<footer th:replace="~{/fragments/footer :: footer}">
 
 
     
