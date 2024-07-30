@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="/fragments/head :: head">
+<head th:replace="~{/fragments/head :: head}">
 
 <body class="sub_page">
 
@@ -9,7 +9,7 @@
     <div class="bg-box">
       <img th:src="@{/resources/static/images/nav-bg.jpg}" alt="">
     </div>
-    <header th:replace="/fragments/header :: header">
+    <header th:replace="~{/fragments/header :: header}">
   </div>
 
 <!-- Modal -->
@@ -38,7 +38,7 @@
     <div class="container  ">
       <div class="post">
         <h3><a th:text="${post.title}">Title</a></h3>
-        <h5 th:text="'Author: '+ ${post.account.firstname} + 
+        <h5 th:text="'Author: '+ ${post.account.firstName} + 
         ' | Created at: '+${#temporals.format(post.createdAt, 'yyyy-MM-dd HH:mm')} +
         ' | Updated at: '+${#temporals.format(post.updatedAt, 'yyyy-MM-dd HH:mm')}"></h5>
         <p th:utext="${post.body}">body</p>
@@ -54,7 +54,7 @@
       </div>
     </div>
   </section>
-  <footer th:replace="/fragments/footer :: footer">
+  <footer th:replace="~{/fragments/footer :: footer}">
 </body>
 
 

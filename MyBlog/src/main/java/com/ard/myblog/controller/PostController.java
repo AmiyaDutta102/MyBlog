@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ard.myblog.model.Account;
@@ -28,6 +29,29 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
+	@GetMapping("/post/{id}")
+    public String getPost(@PathVariable Long id, Model model, Principal principal) {
+        Optional<Post> optionalPost = postService.getById(id);
+        String authUser = "email";
+        if (optionalPost.isPresent()) {
+            Post post = optionalPost.get();
+            model.addAttribute("post", post);
+
+            if (principal != null) {
+                authUser = principal.getName();
+            }
+            if (authUser.equals(post.getAccount().getEmail())){
+                model.addAttribute("isOwner", true);
+            }else{
+                model.addAttribute("isOwner", false);
+            }
+
+            return "post";
+        } else {
+            return "404";
+        }
+    }
+
 	@GetMapping("/post/add")
     @PreAuthorize("isAuthenticated()")
 	public String post_add(Model model, Principal principal) {
